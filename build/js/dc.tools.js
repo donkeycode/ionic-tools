@@ -5,7 +5,9 @@
 
 angular
 
-.module("dc.tools", [])
+.module("dc.tools", [
+    "ionic"
+])
 
 .run(["$templateCache", function cacheTemplates($templateCache) {
     $templateCache.put("dc.tools.directives.searchBar", "<div class=\"bar bar-grey1 bar-subheader item-input-inset item-input-search\">\n    <label class=\"item-input-wrapper\">\n        <i class=\"icon ion-ios-search placeholder-icon\"></i>\n        <input type=\"search\" id=\"search\" placeholder=\"{{'mobile.global.search.placeholder' | translate}}\" autocorrect=\"off\" autocapitalize=\"off\" ng-focus=\"searchIsFocused = true; searchFocusChanged(searchIsFocused)\">\n        <button data-tap-disabled=\"true\"\n                class=\"icon ion-close-circled button-close-search button-clear ng-hide show-if-search\"\n                ng-click=\"emptySearch(); focusSearch();\"></button>\n    </label>\n    <button data-tap-disabled=\"true\" class=\"button button-clear button-grey3 button-main ng-hide cancel-search\"\n            ng-click=\"emptySearch(); blurSearch(); broadcastCancel()\" translate=\"mobile.global.search.cancel\">\n    </button>\n</div>");
@@ -52,12 +54,12 @@ angular
 
         if (ionic.Platform.isIOS()) {
             pushNotification.onDeviceReady({
-                pw_appid: dcCommonConfig.PushwooshAppId,
+                pw_appid: dcCommonConfig.pushwoosh.AppId,
             });
         } else {
             pushNotification.onDeviceReady({
-                pw_appid: dcCommonConfig.PushwooshAppId,
-                projectid: dcCommonConfig.googleProjectNumber
+                pw_appid: dcCommonConfig.pushwoosh.AppId,
+                projectid: dcCommonConfig.pushwoosh.googleProjectNumber
             });
         }
     };
@@ -123,6 +125,25 @@ angular
             );
 
         }
+    };
+}])
+
+.factory("dcToolsTranslation", ["dcCommonConfig", "$log", "$q", "$http", function translation (dcCommonConfig, $log, $q, $http) {
+    return function getTranslations(options) {
+        var deferred = $q.defer();
+
+        $log.debug("Run dcToolsTranslation");
+
+        $http.get(dcCommonConfig.lang.api).then(function getLang(translations) {
+            if (translations.data[options.key]) {
+                $log.debug("Translations find with key : '" + options.key + "'");
+                deferred.resolve(translations.data[options.key]);
+            } else {
+                $log.debug("Translations not find with key : '" + options.key + "'");
+            }
+        });
+
+        return deferred.promise;
     };
 }])
 
