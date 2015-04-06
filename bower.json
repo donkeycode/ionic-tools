@@ -12,7 +12,6 @@
   "license": "MIT",
   "homepage": "http://www.donkeycode.com",
   "ignore": [
-    "**/.*",
     "node_modules",
     "bower_components",
     "test",
