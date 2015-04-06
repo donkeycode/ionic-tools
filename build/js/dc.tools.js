@@ -13,6 +13,21 @@ angular
     $templateCache.put("dc.tools.directives.searchBar", "<div class=\"bar bar-grey1 bar-subheader item-input-inset item-input-search\">\n    <label class=\"item-input-wrapper\">\n        <i class=\"icon ion-ios-search placeholder-icon\"></i>\n        <input type=\"search\" id=\"search\" placeholder=\"{{'mobile.global.search.placeholder' | translate}}\" autocorrect=\"off\" autocapitalize=\"off\" ng-focus=\"searchIsFocused = true; searchFocusChanged(searchIsFocused)\">\n        <button data-tap-disabled=\"true\"\n                class=\"icon ion-close-circled button-close-search button-clear ng-hide show-if-search\"\n                ng-click=\"emptySearch(); focusSearch();\"></button>\n    </label>\n    <button data-tap-disabled=\"true\" class=\"button button-clear button-grey3 button-main ng-hide cancel-search\"\n            ng-click=\"emptySearch(); blurSearch(); broadcastCancel()\" translate=\"mobile.global.search.cancel\">\n    </button>\n</div>");
 }])
 
+.run(["$ionicTemplateLoader", "$templateCache", "$q", "$log", function templateloader($ionicTemplateLoader, $templateCache, $q, $log) {
+    var oldFn = $ionicTemplateLoader.load;
+
+    $ionicTemplateLoader.load = function fetchTemplate(url) {
+        if ($templateCache.get(url)) {
+            var defer = $q.defer();
+            defer.resolve($templateCache.get(url));
+            return defer.promise;
+        }
+
+        $log.debug('Template ' + url + ' not found in $templateCache');
+        return oldFn(url);
+    }
+}])
+
 .factory("dcToolsOnline", function online () {
     /**
     * @ngdoc
