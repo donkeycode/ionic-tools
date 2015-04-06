@@ -11,8 +11,6 @@ var plumber    = require('gulp-plumber');
 var remember   = require('gulp-remember');
 var jscs       = require('gulp-jscs');
 var path       = require('path');
-var browserSync = require('browser-sync');
-var reload      = browserSync.reload;
 
 var ngBlock    = ngBuild.ngBlock;
 var ngIndex    = ngBuild.ngIndex;

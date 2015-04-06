@@ -9,6 +9,14 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "dependencies": {
-    "ng-build": "^0.1.8"
+    "del": "^1.1.1",
+    "gulp-cached": "^1.0.4",
+    "gulp-jscs": "^1.4.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-remember": "^0.3.0",
+    "gulp-rename": "^1.2.2",
+    "ng-build": "^0.1.8",
+    "streamqueue": "^0.1.3",
+    "wiredep": "^2.2.2"
   }
 }
