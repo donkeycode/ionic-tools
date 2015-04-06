@@ -1,0 +1,21 @@
+{
+  "name": "donkeycode-ionic-tools",
+  "version": "0.0.1",
+  "authors": [
+    "Cedric LOMBARDOT <cedric.lombardot@gmail.com>"
+  ],
+  "description": "Some tools for ionic",
+  "main": "build/js/dc.tools.js",
+  "keywords": [
+    "ionic"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.donkeycode.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
