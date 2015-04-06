@@ -12,12 +12,12 @@ function (dcCommonConfig, $log, $ionicPopup, $location, $rootScope) {
 
         if (ionic.Platform.isIOS()) {
             pushNotification.onDeviceReady({
-                pw_appid: dcCommonConfig.PushwooshAppId,
+                pw_appid: dcCommonConfig.pushwoosh.AppId,
             });
         } else {
             pushNotification.onDeviceReady({
-                pw_appid: dcCommonConfig.PushwooshAppId,
-                projectid: dcCommonConfig.googleProjectNumber
+                pw_appid: dcCommonConfig.pushwoosh.AppId,
+                projectid: dcCommonConfig.pushwoosh.googleProjectNumber
             });
         }
     };
