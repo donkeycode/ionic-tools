@@ -244,9 +244,9 @@ Call an action only when modal is confirmed
 # Cached images
 
 ````
-<img use-cached-image bindonce bo-src="item.image" />
+<img dc-tools-use-cached-image bindonce bo-src="item.image" />
 ````
 
 ````
-<div use-cached-bg-image style="background-image: url({{ item.image }})"></div>
+<div dc-tools-use-cached-bg-image style="background-image: url({{ item.image }})"></div>
 ````
