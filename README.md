@@ -246,3 +246,7 @@ Call an action only when modal is confirmed
 ````
 <img use-cached-image bindonce bo-src="item.image" />
 ````
+
+````
+<div use-cached-bg-image style="background-image: url({{ item.image }})"></div>
+````
