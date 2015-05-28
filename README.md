@@ -110,7 +110,7 @@ function ($translateProvider) {
 
 ### dcToolsAutocacheImages
 
-Require add `imgcache.js` in your `bower.json`
+Require add `imgcache.js` in your `bower.json` (>=v1.0rc1)
 
 Init your app with
 
