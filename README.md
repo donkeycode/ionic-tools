@@ -108,6 +108,53 @@ function ($translateProvider) {
 }
 `````
 
+### dcToolsAutocacheImages
+
+Require add `imgcache.js` in your `bower.json`
+
+Init your app with
+
+`````
+// ImageCache
+ImgCache.options.debug = true;
+
+// increase allocated space on Chrome to 50MB, default was 10MB
+ImgCache.options.chromeQuota = 50*1024*1024;
+ImgCache.options.usePersistentCache = true;
+
+ImgCache.init(function(){
+    $log.debug('ImgCache init: success!');
+
+    // from within this function you're now able to call other ImgCache methods
+    // or you can wait for the ImgCacheReady event
+    dcToolsAutocacheImages.ready();
+}, function(){
+    $log.debug('ImgCache init: error! Check the log for errors');
+});
+`````
+
+And when you load json in your services do :
+
+`````
+dcToolsAutocacheImages.cacheImages(
+    response.data, // The json array
+    'item.id', // path to build image /// item = root of row
+    [ // Optional filter list to find the image
+
+        "firstFilter", // Simple filter by string
+
+        // Or by object to pass args
+        {
+            filter: "userIdToImageUrl",
+            args: [
+                "someparam"
+            ]
+        }
+    ]
+);
+`````
+
+
 ## Filters
 
 ### Striptags
