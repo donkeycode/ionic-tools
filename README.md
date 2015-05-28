@@ -154,6 +154,8 @@ dcToolsAutocacheImages.cacheImages(
 );
 `````
 
+Afer use `dc-tools-use-cached-images` directive
+
 
 ## Filters
 
@@ -237,4 +239,10 @@ Call an action only when modal is confirmed
 <a dc-tools-confirm-click="Are you sure ?"
            confirmed-click="doIt()"
            confirm-click-title="Title of alert">Link</a>
+````
+
+# Cached images
+
+````
+<img use-cached-image bindonce bo-src="item.image" />
 ````
