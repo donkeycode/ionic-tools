@@ -537,7 +537,7 @@ angular
     };
 }])
 
-.directive("dcToolsUseCachedBgImages", function useCachedBgImages () {
+.directive("dcToolsUseCachedBgImage", function useCachedBgImage () {
     return {
         restrict: 'A',
         priority: 555,
@@ -557,7 +557,7 @@ angular
     };
 })
 
-.directive("dcToolsUseCachedImages", function useCachedImages () {
+.directive("dcToolsUseCachedImage", function useCachedImage () {
     return {
         restrict: 'A',
         priority: 555,
