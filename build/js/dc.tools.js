@@ -230,7 +230,7 @@ angular
                         pushNotification.setTags(tags);
                     }
 
-                    $rootScope.broadcast('push:registerDevice', {
+                    $rootScope.$broadcast('push:registerDevice', {
                         devicetoken: status.deviceToken,
                         tags: tags
                     });
@@ -249,11 +249,11 @@ angular
             init();
             //register for pushes
             pushNotification.unregisterDevice(
-                function onSuccess(status) {
-                    $log.debug('unRegisterDevice: ' + status.deviceToken);
+                function onSuccess(deviceToken) {
+                    $log.debug('unRegisterDevice: ' + deviceToken);
 
-                    $rootScope.broadcast('push:unRegisterDevice', {
-                        devicetoken: status.deviceToken
+                    $rootScope.$broadcast('push:unRegisterDevice', {
+                        devicetoken: deviceToken
                     });
                 },
                 function onError(status) {
