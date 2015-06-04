@@ -244,6 +244,22 @@ angular
                 }
             );
 
+        },
+        unregisterDevice: function registerDevice() {
+            init();
+            //register for pushes
+            pushNotification.unregisterDevice(
+                function onSuccess(status) {
+                    $log.debug('unRegisterDevice: ' + status.deviceToken);
+
+                    $rootScope.broadcast('push:unRegisterDevice', {
+                        devicetoken: status.deviceToken
+                    });
+                },
+                function onError(status) {
+                    $log.debug('failed to register : ' + JSON.stringify(status));
+                }
+            );
         }
     };
 }])
