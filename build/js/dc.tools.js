@@ -176,7 +176,7 @@ angular
     };
 })
 
-.factory("dcToolsPushwoosh", ["dcCommonConfig", "$log", "$ionicPopup", "$location", "$rootScope", function pushwoosh (dcCommonConfig, $log, $ionicPopup, $location, $rootScope) {
+.factory("dcToolsPushwoosh", ["dcToolsConfig", "$log", "$ionicPopup", "$location", "$rootScope", function pushwoosh (dcToolsConfig, $log, $ionicPopup, $location, $rootScope) {
     if (!window.cordova) {
         return {};
     }
@@ -190,12 +190,12 @@ angular
 
         if (ionic.Platform.isIOS()) {
             pushNotification.onDeviceReady({
-                pw_appid: dcCommonConfig.pushwoosh.AppId,
+                pw_appid: dcToolsConfig.pushwoosh.AppId,
             });
         } else {
             pushNotification.onDeviceReady({
-                pw_appid: dcCommonConfig.pushwoosh.AppId,
-                projectid: dcCommonConfig.pushwoosh.googleProjectNumber
+                pw_appid: dcToolsConfig.pushwoosh.AppId,
+                projectid: dcToolsConfig.pushwoosh.googleProjectNumber
             });
         }
     };
@@ -280,13 +280,13 @@ angular
     };
 }])
 
-.factory("dcToolsTranslation", ["dcCommonConfig", "$log", "$q", "$http", function translation (dcCommonConfig, $log, $q, $http) {
+.factory("dcToolsTranslation", ["dcToolsConfig", "$log", "$q", "$http", function translation (dcToolsConfig, $log, $q, $http) {
     return function getTranslations(options) {
         var deferred = $q.defer();
 
         $log.debug("Run dcToolsTranslation");
 
-        $http.get(dcCommonConfig.lang.api).then(function getLang(translations) {
+        $http.get(dcToolsConfig.lang.api).then(function getLang(translations) {
             if (translations.data[options.key]) {
                 $log.debug("Translations find with key : '" + options.key + "'");
                 deferred.resolve(translations.data[options.key]);
