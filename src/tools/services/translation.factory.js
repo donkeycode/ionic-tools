@@ -1,10 +1,10 @@
-function (dcCommonConfig, $log, $q, $http) {
+function (dcToolsConfig, $log, $q, $http) {
     return function getTranslations(options) {
         var deferred = $q.defer();
 
         $log.debug("Run dcToolsTranslation");
 
-        $http.get(dcCommonConfig.lang.api).then(function getLang(translations) {
+        $http.get(dcToolsConfig.lang.api).then(function getLang(translations) {
             if (translations.data[options.key]) {
                 $log.debug("Translations find with key : '" + options.key + "'");
                 deferred.resolve(translations.data[options.key]);

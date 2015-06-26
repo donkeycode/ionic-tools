@@ -1,4 +1,4 @@
-function (dcCommonConfig, $log, $ionicPopup, $location, $rootScope) {
+function (dcToolsConfig, $log, $ionicPopup, $location, $rootScope) {
     if (!window.cordova) {
         return {};
     }
@@ -12,12 +12,12 @@ function (dcCommonConfig, $log, $ionicPopup, $location, $rootScope) {
 
         if (ionic.Platform.isIOS()) {
             pushNotification.onDeviceReady({
-                pw_appid: dcCommonConfig.pushwoosh.AppId,
+                pw_appid: dcToolsConfig.pushwoosh.AppId,
             });
         } else {
             pushNotification.onDeviceReady({
-                pw_appid: dcCommonConfig.pushwoosh.AppId,
-                projectid: dcCommonConfig.pushwoosh.googleProjectNumber
+                pw_appid: dcToolsConfig.pushwoosh.AppId,
+                projectid: dcToolsConfig.pushwoosh.googleProjectNumber
             });
         }
     };
