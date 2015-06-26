@@ -28,6 +28,22 @@ angular
     }
 }])
 
+.provider("dcToolsConfig", function Config() {
+    this.config = {
+        lang: {
+            api: ""
+        },
+        pushwoosh: {
+            AppId: "",
+            googleProjectNumber: ""
+        }
+    };
+
+    this.$get = function unicornLauncherFactory() {
+        return this.config;
+    };
+})
+
 .factory("dcToolsAutocacheImages", ["$log", "$filter", function autocacheImages($log, $filter) {
     /**
     * @ngdoc
