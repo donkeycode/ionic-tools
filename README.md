@@ -61,15 +61,13 @@ dcToolsOnline.isOnline()
 
 Help you to register user to pushwoosh
 
-Configure a `dcCommonConfig` constant
+Configure a `dcToolsConfig` constant using the dcToolsConfigProvider
 
 `````
-{
-    "pushwoosh": {
-        "AppId": "YOUR_APP_ID",
-        "googleProjectNumber": "YOUR_PROJECT_NUMBER"
-    }
-}
+app.config(function configPushWoosh(dcToolsConfigProvider) {
+    dcToolsConfigProvider.config.pushwoosh.AppId = "YOUR_APP_ID";
+    dcToolsConfigProvider.config.googleProjectNumber = "YOUR_PROJECT_NUMBER";
+});
 `````
 
 At ionic start call :
@@ -88,14 +86,12 @@ dcToolsPushWoosh.registerDevice(tags)
 
 ### dcToolsTranslation
 
-Configure a `dcCommonConfig` constant
+Configure a `dcToolsConfig` constant using `dcToolsConfigProvider`
 
 `````
-{
-    "lang": {
-        "api": "./mocks/lang.json",
-    }
-}
+app.config(function langConfig(dcToolsConfigProvider) {
+    dcToolsConfigProvider.lang.api = "./mocks/lang.json";
+});
 `````
 
 Configure translator :
