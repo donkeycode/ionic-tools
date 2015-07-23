@@ -66,7 +66,7 @@ Configure a `dcToolsConfig` constant using the dcToolsConfigProvider
 `````
 app.config(function configPushWoosh(dcToolsConfigProvider) {
     dcToolsConfigProvider.config.pushwoosh.AppId = "YOUR_APP_ID";
-    dcToolsConfigProvider.config.googleProjectNumber = "YOUR_PROJECT_NUMBER";
+    dcToolsConfigProvider.config.pushwoosh.googleProjectNumber = "YOUR_PROJECT_NUMBER";
 });
 `````
 
