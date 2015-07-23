@@ -74,14 +74,14 @@ At ionic start call :
 
 `````
 if (window.cordova && window.plugins.pushNotification) {
-    dcToolsPushWoosh.registerListener();
+    dcToolsPushwoosh.registerListener();
 }
 `````
 
 To register a device call
 
 `````
-dcToolsPushWoosh.registerDevice(tags)
+dcToolsPushwoosh.registerDevice(tags)
 `````
 
 ### dcToolsTranslation
