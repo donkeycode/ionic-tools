@@ -239,15 +239,15 @@ angular
             init();
             //register for pushes
             pushNotification.registerDevice(
-                function onSuccess(status) {
-                    $log.debug('registerDevice: ' + status.deviceToken);
+                function onSuccess(deviceToken) {
+                    $log.debug('registerDevice: ' + deviceToken);
 
                     if (tags) {
                         pushNotification.setTags(tags);
                     }
 
                     $rootScope.$broadcast('push:registerDevice', {
-                        devicetoken: status.deviceToken,
+                        devicetoken: deviceToken,
                         tags: tags
                     });
                 },
