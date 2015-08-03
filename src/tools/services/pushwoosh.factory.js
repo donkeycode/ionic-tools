@@ -61,7 +61,16 @@ function (dcToolsConfig, $log, $ionicPopup, $location, $rootScope) {
             init();
             //register for pushes
             pushNotification.registerDevice(
-                function onSuccess(deviceToken) {
+                function onSuccess(status) {
+                    var deviceToken;
+                    
+                    // Android
+                    if (_.isObject(status)) {
+                        deviceToken = status.deviceToken;
+                    } else { // IOS
+                        deviceToken = status;
+                    }
+
                     $log.debug('registerDevice: ' + deviceToken);
 
                     if (tags) {
